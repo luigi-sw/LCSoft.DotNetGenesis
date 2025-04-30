@@ -1,0 +1,48 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+	  
+	<IncludeContentInPack>true</IncludeContentInPack>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <ContentTargetFolders>content</ContentTargetFolders>
+    <NoWarn>$(NoWarn);NU5128</NoWarn>
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>	
+  </PropertyGroup>
+
+<PropertyGroup>
+	<PackageType>Template</PackageType>
+	<PackageVersion>0.1.0</PackageVersion>
+	<Version>YourCurrentVersion</Version>
+	<PackageId>LC.DotNetGenesis.Templates</PackageId>
+	<Title>LC Genesis Templates for .NET</Title>
+	<Company>LC Desenvolvimentos</Company>
+	<Authors>Luigi C. Filho</Authors>
+	<Copyright>LC Desenvolvimentos®. © 2025</Copyright>
+	<Description>Template pack for creating .NET applications.</Description>
+	<PackageTags>dotnet-new;templates</PackageTags>
+	<PackageIcon>lcdotnetgenesis.png</PackageIcon>
+    <PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
+	<PackageProjectUrl>https://github.com/luigicfilho/LC.DotNetGenesis</PackageProjectUrl>
+	<PackageLicenseExpression>Creative Commons - BY-NC-ND 4.0</PackageLicenseExpression>
+	<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
+	<RepositoryType>git</RepositoryType>
+	<RepositoryUrl>https://github.com/luigicfilho/LC.DotNetGenesis</RepositoryUrl>
+</PropertyGroup>
+	
+	
+  <ItemGroup>
+	<None Include="lcdotnetgenesis.png" Pack="true" PackagePath="\"/>
+	<None Include="readme.md" Pack="true" PackagePath="\"/>
+	<!--<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>-->
+    <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**;templates\**\.idea\**;templates\**\_ReSharper.Caches\**;" />
+    <Compile Remove="**\*" />
+  </ItemGroup>
+	
+  <ItemGroup>
+    <Folder Include="templates\" />
+  </ItemGroup>
+	
+</Project>
