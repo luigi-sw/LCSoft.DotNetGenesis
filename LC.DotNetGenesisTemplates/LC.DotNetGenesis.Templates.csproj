@@ -26,7 +26,7 @@
 	<PackageIcon>lcdotnetgenesis.png</PackageIcon>
     <PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
 	<PackageProjectUrl>https://github.com/luigicfilho/LC.DotNetGenesis</PackageProjectUrl>
-	<PackageLicenseExpression>Creative Commons - BY-NC-ND 4.0</PackageLicenseExpression>
+	<PackageLicenseExpression>CC-BY-NC-ND-4.0</PackageLicenseExpression>
 	<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/luigicfilho/LC.DotNetGenesis</RepositoryUrl>
