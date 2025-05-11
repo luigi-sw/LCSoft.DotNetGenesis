@@ -134,12 +134,12 @@ dotnet new lc-basic -n MyApp -o ./MyApp
 #### Template Options (not implemented yet)
 Common options available for all templates:
 
-❌ --use-ddd - Enable Domain-Driven Design patterns
-❌ --use-cqrs - Implement CQRS pattern
-❌ --use-es - Add Event Sourcing infrastructure
-❌ --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
-❌ --add-tests - Include unit and integration test projects
-❌ --add-docker - Include Docker support
+- ❌ --use-ddd - Enable Domain-Driven Design patterns
+- ❌ --use-cqrs - Implement CQRS pattern
+- ❌ --use-es - Add Event Sourcing infrastructure
+- ❌ --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
+- ❌ --add-tests - Include unit and integration test projects
+- ❌ --add-docker - Include Docker support
 
 Example:
 
