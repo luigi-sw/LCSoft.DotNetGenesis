@@ -22,7 +22,9 @@
 
 Welcome to the **LC.DotNetGenesis** repository!  
 
-This project provides a collection of `dotnet new` templates for rapidly scaffolding ASP.NET Core applications using **Clean Architecture**, **Hexagonal Architecture (Ports and Adapters)**, and **Onion Architecture** principles — all with support for **Domain-Driven Design (DDD)** and key design patterns like CQRS, Mediator, Repository, and Dependency Injection.
+This project will provide a collection of `dotnet new` templates for rapidly scaffolding ASP.NET Core applications using **Clean Architecture**, **Hexagonal Architecture (Ports and Adapters)**, and **Onion Architecture** principles — all with support for **Domain-Driven Design (DDD)** and key design patterns like CQRS, Mediator, Repository, and Dependency Injection.
+
+> [!TIP] For this first version, this will be only my choices for organization when creating a new project, will not be implemented DDD strictly at this point since this will be a future feature. Right now I just need a quickly setup start for my projects.
 
 ## Overview
 
@@ -41,12 +43,11 @@ Starting a new project with a well-defined structure can significantly accelerat
 
 Currently, the following templates are available:
 
-1. **DDD Basic Stuff (`lc-ddd-basic`)**
+1. **LC Basic Stuff (`lc-basic`)**
 
 Each template is accessible via `dotnet new` and includes comprehensive project structure and example implementations:
 
-- **lc-ddd-basic** – DDD-first template with aggregates, value objects, repositories, and bounded contexts
-
+- **lc-basic** – Basic template with some basic structure and baseline files.
 
 ## Features 
 
@@ -56,24 +57,24 @@ Each template is accessible via `dotnet new` and includes comprehensive project 
 - ✅ Unit test and integration test scaffolding
 - ✅ DI-ready structure
 - ✅ Modern .NET practices
-- ✅ API-first with minimal setup and Swagger/OpenAPI support in API templates (Swagger, versioning, etc.)
 - ✅ Health checks
 - ✅ Logging integration
-- ✅ Configuration management
+- ❌ API-first with minimal setup and Swagger/OpenAPI support in API templates (Swagger, versioning, etc.)
+- ❌ Configuration management
 
 ### All templates support:
 
-- ✅ Domain-Driven Design (DDD) patterns (Entities, Aggregates, Value Objects, Services, Repositories)
-- ✅ Follows SOLID, DRY, KISS principles
-- ✅ CQRS and Mediator pattern implementation integration option
-- ✅ Dependency Injection using Microsoft.Extensions.DependencyInjection
-- ✅ Event Sourcing option
-- ✅ Mediator pattern
-- ✅ Repository pattern
-- ✅ Unit of Work pattern
-- ✅ Specification pattern
-- ✅ Optional persistence via Entity Framework Core (can be replaced)
 - ✅ Modular and layered structure
+- ✅ Follows SOLID, DRY, KISS principles
+- ✅ Dependency Injection using Microsoft.Extensions.DependencyInjection
+- ✅ Optional persistence via Entity Framework Core (can be replaced)
+- ❌ Domain-Driven Design (DDD) patterns (Entities, Aggregates, Value Objects, Services, Repositories)
+- ❌ CQRS and Mediator pattern implementation integration option
+- ❌ Event Sourcing option
+- ❌ Mediator pattern
+- ❌ Repository pattern
+- ❌ Unit of Work pattern
+- ❌ Specification pattern
 
 
 ## Prerequisites
@@ -94,8 +95,8 @@ To use these templates, you first need to install them using the `dotnet new --i
 
 1.  **Clone the repository (Optional - if installing locally):**
     ```bash
-    git clone <your-repository-url>
-    cd <your-repository-directory>
+    git clone https://github.com/luigi-sw/LC.DotNetGenesis
+    cd LC.DotNetGenesis
     ```
 
 2.  **Install from Local Source:**
@@ -103,16 +104,16 @@ To use these templates, you first need to install them using the `dotnet new --i
     ```bash
     dotnet new --install .
     # Or point to specific template project folders if needed
-    # dotnet new --install ./src/Templates/CleanArchitecture.Template/
+    # dotnet new --install ./src/Templates/LCBasic.Template/
     ```
 
 3.  **Install from NuGet (Recommended once published):**
-    *Replace `Your.Template.PackageName` with your actual NuGet package ID.*
+    *Replace `LC.DotNetGenesis` with your actual NuGet package ID.*
     ```bash
-    dotnet new --install Your.Template.PackageName
+    dotnet new --install LC.DotNetGenesis
     ```
 
-You can verify the installation by running `dotnet new --list` and searching for your template short names (e.g., `lc-clean`, `lc-hex`).
+You can verify the installation by running `dotnet new --list` and searching for your template short names (e.g., `lc-basic`, `lc-clean`, `lc-hex`).
 
 ### 2. List Available Templates
 
@@ -125,69 +126,68 @@ dotnet new list
 Once installed, you can create a new project using the templates.
 
 ```bash
-# Example: Create a basic DDD project
-dotnet new lc-ddd-basic -n MyDDDApp -o ./MyDDDApp
+# Example: Create a basic project
+dotnet new lc-basic -n MyApp -o ./MyApp
 ```
 
-#### Template Options
+#### Template Options (not implemented yet)
 Common options available for all templates:
 
---use-ddd - Enable Domain-Driven Design patterns
---use-cqrs - Implement CQRS pattern
---use-es - Add Event Sourcing infrastructure
---db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
---add-tests - Include unit and integration test projects
---add-docker - Include Docker support
+❌ --use-ddd - Enable Domain-Driven Design patterns
+❌ --use-cqrs - Implement CQRS pattern
+❌ --use-es - Add Event Sourcing infrastructure
+❌ --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
+❌ --add-tests - Include unit and integration test projects
+❌ --add-docker - Include Docker support
 
 Example:
 
 ```bash
-dotnet new lc-ddd-basic -n MyDDDProject --use-ddd --db-provider Postgres --add-tests
+dotnet new lc-basic -n MyProject --use-ddd --db-provider Postgres --add-tests
 ```
 
 ## Template Details
 
-### 🧩 DDD-Basic
-Project Structure:
+### 🧩 LC-Basic
 
-- YourProjectName.Domain: Domain Entities, Aggregates, Domain Services, Repository Interfaces.
-- YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
-- YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
-- YourProjectName.Api (or YourProjectName.Web): Presentation Layer, Dependency Injection.
+- Project Structure:
+    - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
+    - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
+    - YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
+    - YourProjectName.Web (or YourProjectName.Api): Thin controllers/endpoints (minimal logic).
 
 #### Project Structure Overview
 ```cpp
-MyDDDApp/
+YourProjectName/
 ├── src/
-│   ├── Api/                   // ASP.NET Core entry point (routing, controllers, view models, endpoints)
-│   ├── Application/           // Use cases (application services), CQRS handlers, orchestrating domain logic
-│   ├── Domain/
-│   │   ├── Aggregates/        // Aggregate roots and nested entities
-│   │   ├── ValueObjects/      // Immutable types with business rules
-│   │   ├── Events/            // Domain events and handlers
-│   │   ├── Repositories/      // Interfaces for persistence logic
-│   │   └── Services/          // Domain services for complex business logic (stateless operations)
+│   ├── Web(or api)/           // Thin controllers/endpoints (minimal logic).
+│   │   ├── Models/            // Request/Response models
+│   │   └── Extensions/        // Configuration and mapping extensions
+│   ├── Application/           // Use cases/services—orchestrates workflows but defers to Core for rules.
+│   │   ├── Dto/               // Data transfer objects
+│   │   ├── Extensions/        // Configuration and mapping extensions
+│   │   └── Services/          // Use cases services and processors
+│   ├── Core/                  // Shared models, interfaces, and domain rules (anemic or rich, as needed).
+│   │   ├── Entities/          // Aggregate roots and nested entities
+│   │   └── Services/          // Core services for complex business logic (stateless operations)
 │   └── Infrastructure/        // Persistence, third-party services, repository implementations
+│       ├── Repository/        // 
+│       └── Integrations/      // 
 ├── tests/
 │   ├── UnitTests/             // Domain and Application layer tests
 │   └── IntegrationTests/      // End-to-end, persistence and API-level testing
-└── docs/                      // DDD diagrams, bounded context maps, event storming results,glossary (optional)
+└── docs/                      // Entities diagrams,glossary (optional)
 ```
 
-Principles:
+- Principles:
+    - Separation of Concerns
+    - Encourages rich domain modeling
+    - Well-suited for small-to-medium but, evolving business domains.
 
-Based on tactical DDD patterns (entities, VOs, aggregates, etc.)
-Encourages rich domain modeling
-Well-suited for complex, evolving business domains
-
-Key Concepts:
-Clear separation of Domain Model and Application Logic.
-Designed for strategic design with Bounded Contexts and ubiquitous language.
-Emphasis on rich domain modeling, not just anemic data models.
-Implements tactical Domain-Driven Design (DDD) patterns.
-Rich domain model with aggregates, value objects, and events.
-Application layer is an orchestrator — it delegates to the domain model.
-Suited for complex, evolving business rules and contexts.
+- Key Concepts:
+    - Separate concerns, but allow cross-layer communication when pragmatic.
+    - Logic is decoupled from frameworks for easy unit/integration testing.
+    - Prefer clear, readable code over "magic" or excessive abstraction.
 
 ## References
  
