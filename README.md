@@ -151,6 +151,8 @@ dotnet new lc-basic -n MyProject --use-ddd --db-provider Postgres --add-tests
 
 ### 🧩 LC-Basic
 
+This template will allow clean architecture and organization of the project, without strict enforcement of rules, will allow the code be highly maintainable, clean and testable.
+
 - Project Structure:
     - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
     - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
@@ -163,19 +165,26 @@ YourProjectName/
 ├── src/
 │   ├── Web(or api)/           // Thin controllers/endpoints (minimal logic).
 │   │   ├── Models/            // Request/Response models
-│   │   └── Extensions/        // Configuration and mapping extensions
+│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│   │   └── Mapping/           // Mapping extensions
 │   ├── Application/           // Use cases/services—orchestrates workflows but defers to Core for rules.
 │   │   ├── Dto/               // Data transfer objects
-│   │   ├── Extensions/        // Configuration and mapping extensions
-│   │   └── Services/          // Use cases services and processors
+│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│   │   ├── Extensions/        // Other relevant extensions
+│   │   ├── Interfaces/        // Interface for the AppServices
+│   │   ├── AppServices/       // Use cases services and processors
+│   │   └── Mapping/           // Mapping extensions
 │   ├── Core/                  // Shared models, interfaces, and domain rules (anemic or rich, as needed).
 │   │   ├── Entities/          // Aggregate roots and nested entities
 │   │   └── Services/          // Core services for complex business logic (stateless operations)
 │   └── Infrastructure/        // Persistence, third-party services, repository implementations
-│       ├── Repository/        // 
-│       └── Integrations/      // 
+│       ├── Repository/        // Repository pattern implementation
+│       ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│       ├── Interfaces/        // Interfaces for infrastructure services
+│       ├── ExternalServices/  // External services 
+│       └── Mapping/           // Mapping extensions
 ├── tests/
-│   ├── UnitTests/             // Domain and Application layer tests
+│   ├── UnitTests/             // Core and Application layer tests
 │   └── IntegrationTests/      // End-to-end, persistence and API-level testing
 └── docs/                      // Entities diagrams,glossary (optional)
 ```
