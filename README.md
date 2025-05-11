@@ -24,7 +24,8 @@ Welcome to the **LC.DotNetGenesis** repository!
 
 This project will provide a collection of `dotnet new` templates for rapidly scaffolding ASP.NET Core applications using **Clean Architecture**, **Hexagonal Architecture (Ports and Adapters)**, and **Onion Architecture** principles — all with support for **Domain-Driven Design (DDD)** and key design patterns like CQRS, Mediator, Repository, and Dependency Injection.
 
-> [!TIP] For this first version, this will be only my choices for organization when creating a new project, will not be implemented DDD strictly at this point since this will be a future feature. Right now I just need a quickly setup start for my projects.
+> [!TIP]
+> For this first version, this will be only my choices for organization when creating a new project, will not be implemented DDD strictly at this point since this will be a future feature. Right now I just need a quickly setup start for my projects.
 
 ## Overview
 
