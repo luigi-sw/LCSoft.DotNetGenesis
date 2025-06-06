@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": "Luigi C. Filho",
+  "classifications": [ "WebAPI" ],
+  "identity": "MyCompany.MyTemplate",
+  "name": "My Custom Template",
+  "shortName": "lc-basic-api",
+  "sourceName": "MyTemplate",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "symbols": {
+    "company": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__company__",
+      "defaultValue": "MyCompany"
+    },
+    "project": {
+      "type": "parameter",
+      "datatype": "string",
+      "replaces": "__project__",
+      "defaultValue": "MyProject"
+    }
+  },
+  "postActions": [
+    {
+      "actionId": "2EFC4A4F-B35B-4351-A866-C6D3AFA82CB1", // shell script
+      "manualInstructions": [
+        {
+          "text": "Create solution file."
+        }
+      ],
+      "args": {
+        "executable": "dotnet",
+        "args": "new sln -n \"__company__.__project__.Api\""
+      },
+      "continueOnError": true,
+      "description": "Creating solution file"
+    },
+    {
+      "actionId": "2EFC4A4F-B35B-4351-A866-C6D3AFA82CB1",
+      "manualInstructions": [
+        {
+          "text": "Add project to the solution."
+        }
+      ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln __company__.__project__.Api.sln add __company__.__project__.Api/__company__.__project__.Api.csproj"
+      },
+      "continueOnError": true,
+      "description": "Adding project to solution"
+    }
+  ]
+}
