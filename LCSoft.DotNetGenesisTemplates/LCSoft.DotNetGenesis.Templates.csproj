@@ -1,35 +1,34 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
+	<TargetFramework>netstandard2.0</TargetFramework>
 	  
 	<IncludeContentInPack>true</IncludeContentInPack>
     <IncludeBuildOutput>false</IncludeBuildOutput>
     <ContentTargetFolders>content</ContentTargetFolders>
     <NoWarn>$(NoWarn);NU5128</NoWarn>
-	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>	
+	<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+	<NoDefaultExcludes>true</NoDefaultExcludes>
   </PropertyGroup>
 
 <PropertyGroup>
 	<PackageType>Template</PackageType>
 	<PackageVersion>0.1.0</PackageVersion>
 	<Version>0.1.0</Version>
-	<PackageId>LC.DotNetGenesis.Templates</PackageId>
-	<Title>LC Genesis Templates for .NET</Title>
+	<PackageId>LCSoft.DotNetGenesis.Templates</PackageId>
+	<Title>LCSoft .NET Genesis Templates</Title>
 	<Company>LC Desenvolvimentos</Company>
 	<Authors>Luigi C. Filho</Authors>
 	<Copyright>LC Desenvolvimentos®. © 2025</Copyright>
-	<Description>Template pack for creating .NET applications.</Description>
-	<PackageTags>dotnet-new;templates</PackageTags>
+	<Description>A collection of professional .NET templates for API and Web projects following DDD and best practices.</Description>
+	<PackageTags>dotnet-new;templates;lcsoft;ddd;api;web</PackageTags>
 	<PackageIcon>lcdotnetgenesis.png</PackageIcon>
     <PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
-	<PackageProjectUrl>https://github.com/luigicfilho/LC.DotNetGenesis</PackageProjectUrl>
+	<PackageProjectUrl>https://github.com/luigi-sw/LCSoft.DotNetGenesis</PackageProjectUrl>
 	<PackageLicenseExpression>CC-BY-NC-ND-4.0</PackageLicenseExpression>
 	<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
 	<RepositoryType>git</RepositoryType>
-	<RepositoryUrl>https://github.com/luigicfilho/LC.DotNetGenesis</RepositoryUrl>
+	<RepositoryUrl>https://github.com/luigi-sw/LCSoft.DotNetGenesis</RepositoryUrl>
 </PropertyGroup>
 	
 	
@@ -39,11 +38,6 @@
 	<!--<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>-->
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**;templates\**\.idea\**;templates\**\_ReSharper.Caches\**;" />
     <Compile Remove="**\*" />
-  </ItemGroup>
-	
-	
-  <ItemGroup>
-    <Content Include=".template.config\template.json" />
   </ItemGroup>
 	
   <ItemGroup>
