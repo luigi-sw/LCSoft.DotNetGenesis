@@ -1,4 +1,4 @@
-# LC.DotNetGenesis
+# LCSoft.DotNetGenesis
 
 > [!CAUTION]
 > These templates are **highly opinionated by design**.
