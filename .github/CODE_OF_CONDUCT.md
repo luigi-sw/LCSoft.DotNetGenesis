@@ -1,4 +1,4 @@
-# Code of Conduct - LC Fila
+# Code of Conduct - LCSoft.DotNetGenesis
 
 ## Our Pledge
 
