@@ -17,14 +17,14 @@
       "type": "parameter",
       "datatype": "string",
       "replaces": "__company__",
-      "fileRename": "_company_placeholder_",
+      //"fileRename": "_company_placeholder_",
       "defaultValue": "MyCompany"
     },
     "projectName": {
       "type": "parameter",
       "datatype": "string",
       "replaces": "__project__",
-      "fileRename": "_projectName_placeholder_",
+      //"fileRename": "_projectName_placeholder_",
       "defaultValue": "MyProject"
     },
     "solutionName": {
@@ -46,23 +46,7 @@
         "separator": ".",
         "removeEmptyValues": true
       }
-    } //,
-    //"fullName": {
-    //  "type": "generated",
-    //  "generator": "join",
-    //  "parameters": {
-    //    {
-    //      "type": "ref",
-    //      "value": "company"
-    //    },
-    //    {
-    //      "type": "ref",
-    //      "value": "project"
-    //    },
-    //    "separator": "."
-    //  },
-    //  "replaces": "__fullname__"
-    //}
+    }
   },
   "sources": [
     {
@@ -73,22 +57,9 @@
         "**/[Oo]bj/**",
         ".template.config/**",
         "**/*.filelist",
-        "**/.keep"
-      ] //,
-      //"modifiers": [
-      //  {
-      //    "rename": {
-      //      "__company__": "${company}",
-      //      "__project__": "${projectName}"
-      //    }
-      //  }
-      //] //,
-      //"modifiers": [
-      //  {
-      //    "condition": "(!includePersistence)",
-      //    "exclude": [ "src/Infrastructure/YourSolutionName.Infrastructure/Persistence/**" ]
-      //  }
-      //]
+        "**/.keep",
+        "**/scripts/**"
+      ]
     }
   ],
   "postActions": [
@@ -107,51 +78,72 @@
         }
       ],
       "continueOnError": true
+    },
+    {
+      "id": "AddProjectsToSolution",
+      "description": "Add all projects to the solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"src/Api/_solutionName_placeholder_.Api.csproj\""
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "AddApplicationProject",
+      "description": "Add Application project to solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"src/Application/_solutionName_placeholder_.Application.csproj\""
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "AddCoreProject",
+      "description": "Add Core project to solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"src/Core/_solutionName_placeholder_.Core.csproj\""
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "AddInfrastructureProject",
+      "description": "Add Infrastructure project to solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"src/Infrastructure/_solutionName_placeholder_.Infrastructure.csproj\""
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "AddUnitTestsProject",
+      "description": "Add Unit Tests project to solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"tests/UnitTests/_solutionName_placeholder_.UnitTests.csproj\""
+      },
+      "continueOnError": false
+    },
+    {
+      "id": "AddIntegrationTestsProject",
+      "description": "Add Integration Tests project to solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "dotnet",
+        "args": "sln add \"tests/IntegrationTests/_solutionName_placeholder_.IntegrationTests.csproj\""
+      },
+      "continueOnError": false
     }
-    //{
-    //  "id": "CreateSolution",
-    //  "description": "Create the solution file and add the project.",
-    //  "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
-    //  "args": {
-    //    "executable": "dotnet",
-    //    "args": "new sln --name \"${company.projectName}\""
-    //  },
-    //  "manualInstructions": [
-    //    {
-    //      "text": "Run manually: pwsh scripts/create-sln.ps1 -ProjectName ${name} -OutputDir ${outputDirectory}"
-    //    }
-    //  ],
-    //  "continueOnError": true
-    //}
-    //{
-    //  "description": "Create solution file.",
-    //  "actionId": "EED0C0E5-6C8E-4CFE-94C3-52B9C6F2E3B6", // Correct ID for a .NET CLI command
-    //  "manualInstructions": [
-    //    {
-    //      "text": "Create solution file."
-    //    }
-    //  ],
-    //  "args": {
-    //    "executable": "dotnet",
-    //    "args": "new sln --name \"${name}\"",
-    //    "workingDirectory": "${outputDirectory}"
-    //  },
-    //  "continueOnError": false
-    //},
-    //{
-    //  "description": "Add project to the solution.",
-    //  "actionId": "AC1156F7-BB77-4DB8-B28F-1EEB0F8C811C", // Correct ID for a .NET CLI command
-    //  "manualInstructions": [
-    //    {
-    //      "text": "Add project to the solution."
-    //    }
-    //  ],
-    //  "args": {
-    //    "executable": "dotnet",
-    //    "args": "sln \"${name}.sln\" add \"${name}.Api/${name}.Api.csproj\"",
-    //    "workingDirectory": "${outputDirectory}"
-    //  },
-    //  "continueOnError": false
-    //}
   ]
 }
