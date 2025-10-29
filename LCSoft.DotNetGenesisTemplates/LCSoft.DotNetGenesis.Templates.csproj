@@ -23,41 +23,23 @@
 	<Description>A collection of professional .NET templates for API and Web projects following DDD and best practices.</Description>
 	<PackageTags>dotnet-new;templates;lcsoft;ddd;api;web</PackageTags>
 	<PackageIcon>lcdotnetgenesis.png</PackageIcon>
+	<PackageReadmeFile>readme.md</PackageReadmeFile>
     <PackageCopyright>LC Desenvolvimentos®. © 2025</PackageCopyright>
 	<PackageProjectUrl>https://github.com/luigi-sw/LCSoft.DotNetGenesis</PackageProjectUrl>
-	<PackageLicenseExpression>CC-BY-NC-ND-4.0</PackageLicenseExpression>
-	<!--<PackageLicenseFile>LICENSE.txt</PackageLicenseFile>-->
+	<!--<PackageLicenseExpression>CC-BY-NC-ND-4.0</PackageLicenseExpression>-->
+	<PackageLicenseFile>LICENSE</PackageLicenseFile>
 	<RepositoryType>git</RepositoryType>
 	<RepositoryUrl>https://github.com/luigi-sw/LCSoft.DotNetGenesis</RepositoryUrl>
 </PropertyGroup>
 	
 	
   <ItemGroup>
-	<None Include="lcdotnetgenesis.png" Pack="true" PackagePath="\" />
-	<None Include="readme.md" Pack="true" PackagePath="\" />
-	<!--<None Include="LICENSE.txt" Pack="true" PackagePath="$(PackageLicenseFile)"/>-->
+	<None Include="../docs/lcdotnetgenesis.png" Pack="true" PackagePath="" />
+	<None Include="../readme.md" Pack="true" PackagePath="" />
+	<None Include="../LICENSE" Pack="true" PackagePath=""/>
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**;templates\**\.idea\**;templates\**\_ReSharper.Caches\**;" />
     <Compile Remove="**\*" />
   </ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="templates\lc-basic-api\docs\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Models\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Dto\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Extensions\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Interfaces\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Application\AppServices\" />
-    <Folder Include="templates\lc-basic-api\src\Core\Entities\" />
-    <Folder Include="templates\lc-basic-api\src\Core\Services\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Interfaces\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\ExternalServices\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Repository\" />
-  </ItemGroup>
+
 	
 </Project>

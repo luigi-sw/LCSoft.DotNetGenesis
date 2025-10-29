@@ -20,7 +20,7 @@
 >
 > Treat these templates as a strong starting opinion — not a one-size-fits-all solution.
 
-Welcome to the **LC.DotNetGenesis** repository!  
+Welcome to the **LCSoft.DotNetGenesis** repository!  
 
 This project will provide a collection of `dotnet new` templates for rapidly scaffolding ASP.NET Core applications using **Clean Architecture**, **Hexagonal Architecture (Ports and Adapters)**, and **Onion Architecture** principles — all with support for **Domain-Driven Design (DDD)** and key design patterns like CQRS, Mediator, Repository, and Dependency Injection.
 
@@ -96,8 +96,8 @@ To use these templates, you first need to install them using the `dotnet new --i
 
 1.  **Clone the repository (Optional - if installing locally):**
     ```bash
-    git clone https://github.com/luigi-sw/LC.DotNetGenesis
-    cd LC.DotNetGenesis
+    git clone https://github.com/luigi-sw/LCSoft.DotNetGenesis
+    cd LCSoft.DotNetGenesis
     ```
 
 2.  **Install from Local Source:**
@@ -109,9 +109,9 @@ To use these templates, you first need to install them using the `dotnet new --i
     ```
 
 3.  **Install from NuGet (Recommended once published):**
-    *Replace `LC.DotNetGenesis` with your actual NuGet package ID.*
+    *Replace `LCSoft.DotNetGenesis` with your actual NuGet package ID.*
     ```bash
-    dotnet new --install LC.DotNetGenesis
+    dotnet new --install LCSoft.DotNetGenesis
     ```
 
 You can verify the installation by running `dotnet new --list` and searching for your template short names (e.g., `lc-basic`, `lc-clean`, `lc-hex`).
