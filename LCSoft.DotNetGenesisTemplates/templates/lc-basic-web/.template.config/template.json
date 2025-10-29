@@ -2,9 +2,9 @@
   "$schema": "http://json.schemastore.org/template",
   "author": "Luigi C. Filho",
   "classifications": [ "Web App", "Web", "DDD" ],
-  "identity": "LCSoft API Template",
-  "name": "LCSoft API Template",
-  "shortName": "lc-basic-api",
+  "identity": "LCSoft Web Template",
+  "name": "LCSoft Web Template",
+  "shortName": "lc-basic-web",
   "sourceName": "__company__.__project__",
   "preferNameDirectory": true,
   "tags": {

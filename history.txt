@@ -1,0 +1,24 @@
+dotnet install
+dotnet install LCSoft.DotNetGenesis.Templates.0.1.0.nupkg
+dotnet new install LCSoft.DotNetGenesis.Templates.0.1.0.nupkg
+cd ..
+cd .
+cd ..
+mkdir teste
+cd teste
+dotnet new lc-basic-api
+dotnet new uninstall LCSoft.DotNetGenesis.Templates.0.1.0.nupkg
+dotnet new uninstall LCSoft.DotNetGenesis.Templates
+dotnet new install LCSoft.DotNetGenesis.Templates.0.1.0.nupkg
+cd ..
+cd LCSoft.DotNetGenesisTemplates
+cd bin
+cd Debug
+dotnet new install LCSoft.DotNetGenesis.Templates.0.1.0.nupkg
+pwd
+cd .
+cd ..c
+cd .. 
+cd ..
+history > history.txt
+doskey /history > history.txt

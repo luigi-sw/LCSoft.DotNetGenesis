@@ -40,24 +40,4 @@
     <Compile Remove="**\*" />
   </ItemGroup>
 	
-  <ItemGroup>
-    <Folder Include="templates\lc-basic-api\docs\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Models\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Api\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Dto\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Extensions\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Interfaces\" />
-    <Folder Include="templates\lc-basic-api\src\Application\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Application\AppServices\" />
-    <Folder Include="templates\lc-basic-api\src\Core\Entities\" />
-    <Folder Include="templates\lc-basic-api\src\Core\Services\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Configuration\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Interfaces\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\ExternalServices\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Mapping\" />
-    <Folder Include="templates\lc-basic-api\src\Infrastructure\Repository\" />
-  </ItemGroup>
-	
 </Project>
