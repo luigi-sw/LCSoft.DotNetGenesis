@@ -1,0 +1,39 @@
+﻿@using Microsoft.AspNetCore.Hosting
+@using Microsoft.Extensions.Hosting
+@inject IWebHostEnvironment Env
+
+@{
+    ViewData["Title"] = "An error occurred";
+}
+
+<div class="container mt-5">
+    <h1 class="text-danger">Oops! Something went wrong.</h1>
+    <p class="lead">An unexpected error occurred. Please try again later.</p>
+
+    <p>If you contact support, please provide theses IDs:</p>
+    <p>Correlation ID: <code>@ViewBag.CorrelationId</code></p>
+    @* <p>Request ID: <code>@ViewBag.RequestId</code></p> *@
+    <p>Trace ID: <code>@ViewBag.TraceId</code></p>
+
+    @if (Env.IsDevelopment())
+    {
+        <div class="alert alert-warning mt-4">
+            <h4>Developer Details</h4>
+            <p>You are seeing this because the app is running in <strong>Development</strong> mode.</p>
+            <pre>
+                @if (Context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerPathFeature>() is { } exceptionFeature)
+                {
+                    <text>Path: @exceptionFeature.Path</text>
+                <br />
+                    <text>Message: @exceptionFeature.Error.Message</text>
+                <br />
+                    <text>Stack Trace:</text>
+                <br />
+                    @exceptionFeature.Error.StackTrace
+                }
+                </pre>
+        </div>
+    }
+
+    <a class="btn btn-primary mt-3" href="@Url.Action("Index","Home")">Back to Home</a>
+</div>

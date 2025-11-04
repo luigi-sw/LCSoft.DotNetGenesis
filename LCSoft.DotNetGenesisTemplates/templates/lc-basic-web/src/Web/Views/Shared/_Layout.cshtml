@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="~/css/site.css" />
+    @await RenderSectionAsync("Style", required: false)
+</head>
+<body class="">
+    <div class="wrapper">
+        <nav class="navbar">
+            <!-- Left navbar links -->
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="fas fa-bars"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a asp-area="" asp-controller="Home" asp-action="Index" class="nav-link">Home</a>
+                </li>
+            </ul>
+            <div class="">
+                <img src="~/img/logo.png" style="width: 260px;" alt="Logo" />
+            </div>
+        </nav>
+    </div>
+    <div class="content-wrapper" >
+        @RenderBody()
+    </div>
+
+    <footer class="main-footer">
+        <div class="">
+            &copy; 2021 - Company - <a asp-area="" asp-controller="Home" asp-action="Privacy">Termo de privacidade</a>
+        </div>
+    </footer>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

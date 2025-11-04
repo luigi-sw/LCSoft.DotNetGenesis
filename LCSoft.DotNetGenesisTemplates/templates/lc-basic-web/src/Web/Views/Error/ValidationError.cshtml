@@ -1,0 +1,18 @@
+﻿@model Dictionary<string, string[]>
+
+@{
+    ViewData["Title"] = "Validation failed";
+}
+<div class="container mt-5">
+    <h1 class="text-danger">Validation Errors</h1>
+    <p class="lead">Please review the following issues:</p>
+    <ul class="list-group">
+        @foreach (var kvp in Model)
+        {
+            <li class="list-group-item">
+                <strong>@kvp.Key</strong>: @string.Join(", ", kvp.Value)
+            </li>
+        }
+    </ul>
+    <a class="btn btn-primary mt-3" href="javascript:history.back()">Go Back</a>
+</div>
