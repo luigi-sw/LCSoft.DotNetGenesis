@@ -44,45 +44,46 @@ Starting a new project with a well-defined structure can significantly accelerat
 
 Currently, the following templates are available:
 
-1. **LC Basic Stuff (`lc-basic`)**
+1. **LC Basics (`lc-basic-*`)**
 
 Each template is accessible via `dotnet new` and includes comprehensive project structure and example implementations:
 
-- **lc-basic** – Basic template with some basic structure and baseline files.
+- **lc-basic-api** – Basic template with some basic structure and baseline files.
+- **lc-basic-web** – Basic template for web applications with MVC structure.
 
 ## Features 
 
-- ✅ Ready-to-use architecture patterns
-- ✅ SOLID principles implementation
-- ✅ Testable design
-- ✅ Unit test and integration test scaffolding
-- ✅ DI-ready structure
-- ✅ Modern .NET practices
-- ✅ Health checks
-- ✅ Logging integration
-- ❌ API-first with minimal setup and Swagger/OpenAPI support in API templates (Swagger, versioning, etc.)
-- ❌ Configuration management
+- [x] Ready-to-use architecture patterns
+- [x] SOLID principles implementation
+- [x] Testable design
+- [x] Unit test and integration test scaffolding
+- [x] DI-ready structure
+- [x] Modern .NET practices
+- [x] Health checks
+- [x] Logging integration
+- [ ] API-first with minimal setup and Swagger/OpenAPI support in API templates (Swagger, versioning, etc.)
+- [ ] Configuration management
 
 ### All templates support:
 
-- ✅ Modular and layered structure
-- ✅ Follows SOLID, DRY, KISS principles
-- ✅ Dependency Injection using Microsoft.Extensions.DependencyInjection
-- ✅ Optional persistence via Entity Framework Core (can be replaced)
-- ❌ Domain-Driven Design (DDD) patterns (Entities, Aggregates, Value Objects, Services, Repositories)
-- ❌ CQRS and Mediator pattern implementation integration option
-- ❌ Event Sourcing option
-- ❌ Mediator pattern
-- ❌ Repository pattern
-- ❌ Unit of Work pattern
-- ❌ Specification pattern
+- [x] Modular and layered structure
+- [x] Follows SOLID, DRY, KISS principles
+- [x] Dependency Injection using Microsoft.Extensions.DependencyInjection
+- [ ] Optional persistence via Entity Framework Core (can be replaced)
+- [ ] Domain-Driven Design (DDD) patterns (Entities, Aggregates, Value Objects, Services, Repositories)
+- [ ] CQRS and Mediator pattern implementation integration option
+- [ ] Event Sourcing option
+- [ ] Mediator pattern
+- [ ] Repository pattern
+- [ ] Unit of Work pattern
+- [ ] Specification pattern
 
 
 ## Prerequisites
 - .NET 8.0 SDK or later
-- (Optional) Docker for containerized development
+- (Optional) Docker for containerized development - not implemented yet
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1. Install Templates
 
@@ -114,7 +115,7 @@ To use these templates, you first need to install them using the `dotnet new --i
     dotnet new --install LCSoft.DotNetGenesis
     ```
 
-You can verify the installation by running `dotnet new --list` and searching for your template short names (e.g., `lc-basic`, `lc-clean`, `lc-hex`).
+You can verify the installation by running `dotnet new --list` and searching for your template short names (e.g., `lc-basic-api`, `lc-basic-web`).
 
 ### 2. List Available Templates
 
@@ -134,12 +135,12 @@ dotnet new lc-basic -n MyApp -o ./MyApp
 #### Template Options (not implemented yet)
 Common options available for all templates:
 
-- ❌ --use-ddd - Enable Domain-Driven Design patterns
-- ❌ --use-cqrs - Implement CQRS pattern
-- ❌ --use-es - Add Event Sourcing infrastructure
-- ❌ --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
-- ❌ --add-tests - Include unit and integration test projects
-- ❌ --add-docker - Include Docker support
+- [ ] --use-ddd - Enable Domain-Driven Design patterns
+- [ ] --use-cqrs - Implement CQRS pattern
+- [ ] --use-es - Add Event Sourcing infrastructure
+- [ ] --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
+- [ ] --add-tests - Include unit and integration test projects
+- [ ] --add-docker - Include Docker support
 
 Example:
 
@@ -149,7 +150,7 @@ dotnet new lc-basic -n MyProject --use-ddd --db-provider Postgres --add-tests
 
 ## Template Details
 
-### 🧩 LC-Basic
+### LC-Basic-Api
 
 This template will allow clean architecture and organization of the project, without strict enforcement of rules, will allow the code be highly maintainable, clean and testable.
 
@@ -157,15 +158,18 @@ This template will allow clean architecture and organization of the project, wit
     - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
     - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
     - YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
-    - YourProjectName.Web (or YourProjectName.Api): Thin controllers/endpoints (minimal logic).
+    - YourProjectName.Api: Thin controllers/endpoints (minimal logic).
 
 #### Project Structure Overview
 ```cpp
 YourProjectName/
 ├── src/
-│   ├── Web(or api)/           // Thin controllers/endpoints (minimal logic).
+│   ├── Api/                   // Thin controllers/endpoints (minimal logic).
 │   │   ├── Models/            // Request/Response models
-│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│   │   ├── Apidoc/            // Api documentation (Swagger/OpenAPI) extensions
+│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions
+│   │   ├── Filters/           // Filter extensions (Exception handling, etc.)
+│   │   ├── Mvc/               // MVC related extensions (Controllers, Views, etc.)
 │   │   └── Mapping/           // Mapping extensions
 │   ├── Application/           // Use cases/services—orchestrates workflows but defers to Core for rules.
 │   │   ├── Dto/               // Data transfer objects
@@ -173,6 +177,9 @@ YourProjectName/
 │   │   ├── Extensions/        // Other relevant extensions
 │   │   ├── Interfaces/        // Interface for the AppServices
 │   │   ├── AppServices/       // Use cases services and processors
+│   │   ├── Healthcheck/       // Health check services and processors
+│   │   ├── Logging/           // Logging services and processors
+│   │   ├── Middleware/        // Middleware extensions
 │   │   └── Mapping/           // Mapping extensions
 │   ├── Core/                  // Shared models, interfaces, and domain rules (anemic or rich, as needed).
 │   │   ├── Entities/          // Aggregate roots and nested entities
@@ -198,6 +205,62 @@ YourProjectName/
     - Separate concerns, but allow cross-layer communication when pragmatic.
     - Logic is decoupled from frameworks for easy unit/integration testing.
     - Prefer clear, readable code over "magic" or excessive abstraction.
+
+### LC-Basic-Web
+
+This template will allow clean architecture and organization of the project, without strict enforcement of rules, will allow the code be highly maintainable, clean and testable.
+
+- Project Structure:
+    - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
+    - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
+    - YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
+    - YourProjectName.Web: Thin controllers/endpoints (minimal logic).
+
+#### Project Structure Overview
+```cpp
+YourProjectName/
+├── src/
+│   ├── Web/                   // Thin controllers/endpoints (minimal logic).
+│   │   ├── Models/            // Request/Response models
+│   │   ├── Controllers/       // Controllers folder
+│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions
+│   │   ├── Filters/           // Filter extensions (Exception handling, etc.)
+│   │   ├── Views/             // Views folder
+│   │   └── Mapping/           // Mapping extensions
+│   ├── Application/           // Use cases/services—orchestrates workflows but defers to Core for rules.
+│   │   ├── Dto/               // Data transfer objects
+│   │   ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│   │   ├── Extensions/        // Other relevant extensions
+│   │   ├── Interfaces/        // Interface for the AppServices
+│   │   ├── AppServices/       // Use cases services and processors
+│   │   ├── Healthcheck/       // Health check services and processors
+│   │   ├── Logging/           // Logging services and processors
+│   │   ├── Middleware/        // Middleware extensions
+│   │   └── Mapping/           // Mapping extensions
+│   ├── Core/                  // Shared models, interfaces, and domain rules (anemic or rich, as needed).
+│   │   ├── Entities/          // Aggregate roots and nested entities
+│   │   └── Services/          // Core services for complex business logic (stateless operations)
+│   └── Infrastructure/        // Persistence, third-party services, repository implementations
+│       ├── Repository/        // Repository pattern implementation
+│       ├── Configuration/     // Configuration (Dependency Injection) extensions 
+│       ├── Interfaces/        // Interfaces for infrastructure services
+│       ├── ExternalServices/  // External services 
+│       └── Mapping/           // Mapping extensions
+├── tests/
+│   └── UnitTests/             // Core and Application layer tests
+└── docs/                      // Entities diagrams,glossary (optional)
+```
+
+- Principles:
+    - Separation of Concerns
+    - Encourages rich domain modeling
+    - Well-suited for small-to-medium but, evolving business domains.
+
+- Key Concepts:
+    - Separate concerns, but allow cross-layer communication when pragmatic.
+    - Logic is decoupled from frameworks for easy unit/integration testing.
+    - Prefer clear, readable code over "magic" or excessive abstraction.
+
 
 ## References
  

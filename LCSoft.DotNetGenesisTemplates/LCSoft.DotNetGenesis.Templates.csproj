@@ -36,9 +36,15 @@
   <ItemGroup>
 	<None Include="../docs/lcdotnetgenesis.png" Pack="true" PackagePath="" />
 	<None Include="../readme.md" Pack="true" PackagePath="" />
-	<None Include="../LICENSE" Pack="true" PackagePath=""/>
+	<None Include="../LICENSE" Pack="true" PackagePath="" />
     <Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**;templates\**\.vs\**;templates\**\.idea\**;templates\**\_ReSharper.Caches\**;" />
     <Compile Remove="**\*" />
+  </ItemGroup>
+	
+	
+  <ItemGroup>
+    <EmbeddedResource Remove="templates\lc-basic-web\src\Web\Resources\ModelBindingMessages.pt-BR.resx" />
+    <EmbeddedResource Remove="templates\lc-basic-web\src\Web\Resources\ModelBindingMessages.resx" />
   </ItemGroup>
 
 	

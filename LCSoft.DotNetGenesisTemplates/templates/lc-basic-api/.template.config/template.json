@@ -6,6 +6,7 @@
   "name": "LCSoft API Template",
   "shortName": "lc-basic-api",
   "sourceName": "solutionName",
+  "placeholderFilename": ".keep",
   "preferNameDirectory": true,
   "tags": {
     "language": "C#",
@@ -48,14 +49,18 @@
   "sources": [
     {
       "source": "./",
+      "include": [ "**/*" ],
       "target": "./",
       "exclude": [
         "**/[Bb]in/**",
         "**/[Oo]bj/**",
         ".template.config/**",
-        "**/*.filelist",
-        "**/.keep",
-        "**/scripts/**"
+        "**/*.filelist"
+        //"**/.keep",
+        //"**/scripts/**"
+      ],
+      "copyOnly": [
+        "**/.keep"
       ]
     }
   ],

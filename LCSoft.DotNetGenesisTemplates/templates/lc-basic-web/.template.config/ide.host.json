@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json.schemastore.org/vs-2017.3.host",
+  "defaultSymbolVisibility": true,
+  "learnMoreLink": "https://github.com/luigi-sw/lcsoft.dotnetgenesis/blob/main/docs/Template.md",
+  "order": 0,
+  "icon": "lcdotnetgenesis.png",
+  "symbolInfo": [
+    {
+      "id": "opt1",
+      "name": {
+        "text": "LC option 1"
+      },
+      "isVisible": "true"
+    },
+    {
+      "id": "opt2",
+      "name": {
+        "text": "LC option 2"
+      },
+      "isVisible": "true"
+    },
+    {
+      "id": "opt3",
+      "name": {
+        "text": "LC option 3"
+      },
+      "isVisible": "true"
+    }
+  ]
+}

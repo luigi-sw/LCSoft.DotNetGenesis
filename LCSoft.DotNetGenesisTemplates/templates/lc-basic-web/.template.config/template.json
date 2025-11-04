@@ -5,7 +5,8 @@
   "identity": "LCSoft Web Template",
   "name": "LCSoft Web Template",
   "shortName": "lc-basic-web",
-  "sourceName": "__company__.__project__",
+  "sourceName": "solutionName",
+  //"placeholderFilename": ".keep",
   "preferNameDirectory": true,
   "tags": {
     "language": "C#",
@@ -18,59 +19,88 @@
       "replaces": "__company__",
       "defaultValue": "MyCompany"
     },
-    "project": {
+    "projectName": {
       "type": "parameter",
       "datatype": "string",
       "replaces": "__project__",
       "defaultValue": "MyProject"
+    },
+    "solutionName": {
+      "type": "generated",
+      "generator": "join",
+      "replaces": "__company__.__project__",
+      "fileRename": "_solutionName_placeholder_",
+      "parameters": {
+        "symbols": [
+          {
+            "type": "ref",
+            "value": "company"
+          },
+          {
+            "type": "ref",
+            "value": "projectName"
+          }
+        ],
+        "separator": ".",
+        "removeEmptyValues": true
+      }
     }
   },
   "sources": [
     {
       "source": "./",
+      "include": [ "**/*" ],
       "target": "./",
       "exclude": [
         "**/[Bb]in/**",
         "**/[Oo]bj/**",
         ".template.config/**",
         "**/*.filelist"
-      ] //,
+      ],
       //"modifiers": [
       //  {
-      //    "condition": "(!includePersistence)",
-      //    "exclude": [ "src/Infrastructure/YourSolutionName.Infrastructure/Persistence/**" ]
+      //    "exclude": [
+      //      "**/.template.config/**"
+      //    ]
       //  }
+      //],
+      //"copyOnly": [
+      //  "**/.keep"
       //]
     }
   ],
   "postActions": [
     {
-      "actionId": "2EFC4A4F-B35B-4351-A866-C6D3AFA82CB1", // shell script
-      "manualInstructions": [
-        {
-          "text": "Create solution file."
-        }
-      ],
+      "id": "CreateSolution",
+      "description": "Create the solution file and add the project.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
       "args": {
         "executable": "dotnet",
-        "args": "new sln -n \"__company__.__project__.Api\""
+        "args": "new sln --name \"_solutionName_placeholder_\""
       },
-      "continueOnError": true,
-      "description": "Creating solution file"
+      "manualInstructions": [
+        {
+          "text": "Run manually: dotnet new sln --name {Your Solution Name}"
+        }
+      ],
+      "continueOnError": true
     },
     {
-      "actionId": "2EFC4A4F-B35B-4351-A866-C6D3AFA82CB1",
+      "id": "AddAllProjectsToSolution",
+      "description": "Add all projects to the solution.",
+      "actionId": "3A7C4B45-1F5D-4A30-959A-51B88E82B5D2",
+      "applyFileRenamesToArgs": [ "args" ],
+      "args": {
+        "executable": "cmd",
+        "args": "/c \"dotnet sln add src/Web/_solutionName_placeholder_.Web.csproj && dotnet sln add src/Application/_solutionName_placeholder_.Application.csproj && dotnet sln add src/Core/_solutionName_placeholder_.Core.csproj && dotnet sln add src/Infrastructure/_solutionName_placeholder_.Infrastructure.csproj && dotnet sln add tests/UnitTests/_solutionName_placeholder_.UnitTests.csproj \""
+      },
       "manualInstructions": [
         {
-          "text": "Add project to the solution."
+          "text": "Run manually: dotnet sln add src/{Your Solution Name}.Web.csproj && dotnet sln add tests/UnitTests/{Your Solution Name}.UnitTests.csproj"
         }
       ],
-      "args": {
-        "executable": "dotnet",
-        "args": "sln __company__.__project__.Api.sln add __company__.__project__.Api/__company__.__project__.Api.csproj"
-      },
-      "continueOnError": true,
-      "description": "Adding project to solution"
+      "continueOnError": false
     }
   ]
 }
