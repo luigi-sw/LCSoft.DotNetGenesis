@@ -60,7 +60,7 @@ Each template is accessible via `dotnet new` and includes comprehensive project 
 - [x] DI-ready structure
 - [x] Modern .NET practices
 - [x] Health checks
-- [x] Logging integration
+- [ ] Logging integration
 - [ ] API-first with minimal setup and Swagger/OpenAPI support in API templates (Swagger, versioning, etc.)
 - [ ] Configuration management
 
@@ -104,9 +104,13 @@ To use these templates, you first need to install them using the `dotnet new --i
 2.  **Install from Local Source:**
     Navigate to the root directory containing the `.template.config` folders (or the parent directory of your template projects) and run:
     ```bash
-    dotnet new --install .
-    # Or point to specific template project folders if needed
-    # dotnet new --install ./src/Templates/LCBasic.Template/
+    # **Build the project** (this will generate a `.nupkg` file automatically)
+    dotnet build
+
+    # The package will be created under `bin/Debug` (or `bin/Release` if you build in Release mode).
+
+    # **Install the template from the generated NuGet package**  
+    dotnet new install ./LCSoft.DotNetGenesisTemplates/bin/Debug/LCSoft.DotNetGenesis.Templates.<version>.nupkg
     ```
 
 3.  **Install from NuGet (Recommended once published):**
@@ -128,25 +132,22 @@ dotnet new list
 Once installed, you can create a new project using the templates.
 
 ```bash
-# Example: Create a basic project
-dotnet new lc-basic -n MyApp -o ./MyApp
+# Example: Create a basic api project
+dotnet new lc-basic-api --company MyCompany --projectName MyProject -o ./MyApi
+# Example: Create a basic web project
+dotnet new lc-basic-web --company MyCompany --projectName MyProject -o ./MyWebApp
 ```
 
-#### Template Options (not implemented yet)
-Common options available for all templates:
+#### Template Parameters
+| Parameter       | Description                             | Default Value      |
+|-----------------|-----------------------------------------|--------------------|
+| `--company`     | Company or organization name            | `MyCompany`        |
+| `--projectName` | Name of the project                     | `MyProject`        |
+| `-o`            | Output directory for the new project    | Current Directory  |
 
-- [ ] --use-ddd - Enable Domain-Driven Design patterns
-- [ ] --use-cqrs - Implement CQRS pattern
-- [ ] --use-es - Add Event Sourcing infrastructure
-- [ ] --db-provider - Specify database provider (SqlServer, Postgres, Sqlite, InMemory)
-- [ ] --add-tests - Include unit and integration test projects
-- [ ] --add-docker - Include Docker support
-
-Example:
-
-```bash
-dotnet new lc-basic -n MyProject --use-ddd --db-provider Postgres --add-tests
-```
+- Company and ProjectName will be used to set namespaces and project names accordingly.
+    This is important for maintaining consistency across the solution.
+- Output directory (`-o`) specifies where to create the new project.
 
 ## Template Details
 
@@ -155,10 +156,10 @@ dotnet new lc-basic -n MyProject --use-ddd --db-provider Postgres --add-tests
 This template will allow clean architecture and organization of the project, without strict enforcement of rules, will allow the code be highly maintainable, clean and testable.
 
 - Project Structure:
-    - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
-    - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
-    - YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
-    - YourProjectName.Api: Thin controllers/endpoints (minimal logic).
+    - YourCompany.YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
+    - YourCompany.YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
+    - YourCompany.YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
+    - YourCompany.YourProjectName.Api: Thin controllers/endpoints (minimal logic).
 
 #### Project Structure Overview
 ```cpp
@@ -211,10 +212,10 @@ YourProjectName/
 This template will allow clean architecture and organization of the project, without strict enforcement of rules, will allow the code be highly maintainable, clean and testable.
 
 - Project Structure:
-    - YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
-    - YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
-    - YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
-    - YourProjectName.Web: Thin controllers/endpoints (minimal logic).
+    - YourCompany.YourProjectName.Core: Shared models, interfaces, and domain rules (anemic or rich, as needed).
+    - YourCompany.YourProjectName.Application: Application Services, DTOs, Use Cases, Interfaces for Infrastructure.
+    - YourCompany.YourProjectName.Infrastructure: Data Access, External Service Clients, Implementations of Infrastructure Interfaces.
+    - YourCompany.YourProjectName.Web: Thin controllers/endpoints (minimal logic).
 
 #### Project Structure Overview
 ```cpp
@@ -265,3 +266,5 @@ YourProjectName/
 ## References
  
 - [Clean Architecture by Robert C. Martin](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
+- [Microsoft Architecture Patterns](https://docs.microsoft.com/en-us/dotnet/architecture/)
+- [Luigi's Pragmatic Clean Architecture](docs/LuigisPragmaticCleanArchitecture.md)
